@@ -14,10 +14,10 @@ import next.model.User;
 /**
  * @author hoseong
  */
-@WebServlet("/logout")
+@WebServlet("/user/logout")
 public class LogoutServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User databaseUser = DataBase.findUserById(req.getParameter("userId"));
 
 		if (databaseUser != null) {
@@ -26,6 +26,6 @@ public class LogoutServlet extends HttpServlet {
 			databaseUser.setEmail(req.getParameter("email"));
 		}
 
-		resp.sendRedirect("/user/list");
+		resp.sendRedirect("/index.jsp");
 	}
 }
